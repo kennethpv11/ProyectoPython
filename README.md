@@ -10,8 +10,11 @@ Reto tecnico de microservicios
 Para ejecutar el proyecto debemos seguir los siguientes pasos:
 1. Descargar el repositorio
 2. Deberemos instalar docker en caso de no tenerlo en nuestra maquina
-3. Ejecutar el comando docker-compose up en la raiz de este proyecto
-4. Automaticamente activará los contenedores necesarios para ejecutar el proyecto
+3. Ejecutar el comando **docker-compose build** en la raiz de este proyecto el cual creará
+las imagenes a ejecutar posteriormente
+4. Ejecutar el comando **docker-compose up** en la raiz del proyecto para arrancar los servicios
+(esto debe ser asi porque en caso contrario la api intermediaria no alcanza a detecetar los servicios)
+5. Automaticamente activará los contenedores necesarios para ejecutar el proyecto
 
 **_Contenedores de docker y puertos_**
 | servicio | contenedor docker| puerto |
