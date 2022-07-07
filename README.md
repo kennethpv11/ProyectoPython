@@ -21,8 +21,7 @@ Para ejecutar el proyecto debemos seguir los siguientes pasos:
 |Api del crud de medidas|crud| 8000 |
 | base de datos postgres | bd | 5432 |
 
-Cada uno de ellos se puede acceder mediante el localhost (127.0.0.1) y solo se puede acceder a ellos
-mediante la contraseña y los datos necesarios como se explicará a continuación:
+Cada uno de ellos se puede acceder de distinta manera y con los datos necesarios como se explica a continuación:
 
 <details><summary>Api simulador</summary>
 
@@ -100,7 +99,10 @@ Donde en bearer token se insertará el token y posteriormente se organiza el res
     Como la api intermediate no tiene puertos expuestos, para esta api se a configurado logs para ver
     las respuestas del consumo del crud al obtener la información, podemos acceder a ellos de la siguiente manera:
 
-
+        docker logs intermediate
+    
+donde intermediate es el nombre del contenedor de docker, a esto le puedes agregar un until como aparece en la
+documentación oficial para ver desde y hasta cierto punto en el tiempo
 
 </details>
 
