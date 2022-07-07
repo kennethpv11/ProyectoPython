@@ -32,6 +32,7 @@ services:
   
   intermediate:
     build: ./ApiIntermediate
+    container_name: intermediate
     ports:
     - "6000:6000"
     depends_on:
