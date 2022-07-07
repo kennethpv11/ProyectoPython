@@ -14,7 +14,7 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=test_db
 
-  crudApi:
+  crud:
     build: ./CRUDSimulador
     container_name: crud
     ports:
@@ -22,7 +22,7 @@ services:
     depends_on:
     - postgres
 
-  simuladorApi:
+  simulador:
     build: ./Simulador
     container_name: simulador
     ports:
@@ -36,5 +36,5 @@ services:
     ports:
     - "6000:6000"
     depends_on:
-    - crudApi
-    - simuladorApi
+    - crud
+    - simulador
