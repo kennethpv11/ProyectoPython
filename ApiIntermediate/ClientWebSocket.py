@@ -27,11 +27,11 @@ def request_token():
 
 
 async def save_register_with_device():
-    token = None
-    while token is None:
-        token = request_token()
-
     async with websockets.connect(URL_WEBSOCKET, extra_headers={"Authorization": SECRET}) as websocket:
+        token = None
+        while token is None:
+            token = request_token()
+            
         headers = CaseInsensitiveDict()
         headers["Authorization"] = f"Bearer {token['token']}"
         while True:
