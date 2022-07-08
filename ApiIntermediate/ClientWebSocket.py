@@ -16,14 +16,14 @@ PASSWORD = getenv("PSWD_ADMIN")
 
 
 def request_token():
-    headers_get = CaseInsensitiveDict()
-    print(USERNAME)
-    print(PASSWORD)
-    headers_get["username"] = "admin"
-    headers_get["password"] = "admin123"
-    response_token = requests.get(URL_SEND + "token/", headers=headers_get)
-    log.debug(response_token.json())
-    return response_token
+        headers_get = CaseInsensitiveDict()
+        print(USERNAME)
+        print(PASSWORD)
+        headers_get["username"] = "admin"
+        headers_get["password"] = "admin123"
+        response_token = requests.get(URL_SEND + "token/", headers=headers_get)
+        log.debug(response_token.json())
+        return response_token
 
 
 async def save_register_with_device():
@@ -41,5 +41,5 @@ async def save_register_with_device():
 
 
 def await_token():
-    wait().at_most(15, SECOND).poll_interval(3, SECOND).with_description('dont get the token').until(
+    wait().ignore_exceptions().at_most(15, SECOND).poll_interval(3, SECOND).with_description('dont get the token').until(
         lambda: request_token().status_code == 200)
