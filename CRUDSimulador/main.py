@@ -23,6 +23,8 @@ def insert_admin():
         return True
     except sqlalchemy.exc as e:
         return False
+    except Exception:
+        return False
 
 
 @app.on_event('startup')
