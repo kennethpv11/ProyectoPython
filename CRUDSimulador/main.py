@@ -1,4 +1,7 @@
 from fastapi import FastAPI
+
+from config.DbHandler import conn
+from models.Dao.AdminDao import admin
 from routes.CrudSimulador import simulator
 from dotenv import load_dotenv
 from os import getenv
@@ -13,4 +16,7 @@ app.include_router(simulator)
 app.include_router(token, prefix='/token')
 
 
-
+@app.on_event('startup')
+def insert_admin():
+    data = {'user': USER, 'password': PASSWORD}
+    conn.execute(admin.insert().values(data))
