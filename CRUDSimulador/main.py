@@ -18,5 +18,8 @@ app.include_router(token, prefix='/token')
 
 @app.on_event('startup')
 def insert_admin():
-    data = {'user': USER, 'password': PASSWORD}
-    conn.execute(admin.insert().values(data))
+    try:
+        data = {'user': USER, 'password': PASSWORD}
+        conn.execute(admin.insert().values(data))
+    except Exception:
+        pass

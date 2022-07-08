@@ -11,7 +11,19 @@ Para ejecutar el proyecto debemos seguir los siguientes pasos:
 1. Descargar el repositorio
 2. Deberemos instalar docker en caso de no tenerlo en nuestra maquina
 3. Ejecutar el comando **docker-compose up** en la raiz del proyecto para arrancar los servicios
-4. Automaticamente activará los contenedores necesarios y ejecutará el proyecto
+
+    (esto creará la base de datos y la red de comunicación)
+
+4. Ejecutar el comando **docker-compose kill** en la raiz del proyecto
+
+    (esto matará el proceso ya que en el primer arranque no se inicializan los contenedores como queremos)
+
+5. Ejecutar el comando **docker-compose up** en la raiz del proyecto
+
+    (Automaticamente activará los contenedores necesarios y ejecutará el proyecto en el orden necesario)
+
+6. Esto es necesario solo para el primer arranque pero después de su configuración en el paso 3 ya no es necesario
+matar los procesos
 
 **_Contenedores de docker y puertos_**
 | servicio | contenedor docker| puerto |
@@ -44,6 +56,8 @@ variable de entorno api intermediaria : SECRET_WEBSOCKET
 
 variable de entorno api simulador : SECRET_KEY
 
+__Estas variable estan alocadas en el archivo .env de sus respectivos proyectos__
+
 ### imagen de referencia para su uso en postman
 
 ![consumo websocket](./imagesREADME/connectSimulador.png)
@@ -74,6 +88,8 @@ variable de entorno api simulador : SECRET_KEY
 
  **hay que recalcar que al modificar esta información deberá cambiar las variables de entorno para la api intermediaria**
  los secretos son: SUPERADMIN , PSWD_ADMIN
+
+ __Estas variable estan alocadas en el archivo .env de sus respectivos proyectos__
  
  Mas no se puede modificar ingresandolo a la base de datos ya que el sistema codifica con una contraseña en formato jwt
 
