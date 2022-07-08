@@ -1,3 +1,4 @@
+import sqlalchemy
 from fastapi import FastAPI
 from routes.CrudSimulador import simulator
 from config.DbHandler import conn
@@ -15,10 +16,17 @@ app.include_router(simulator)
 app.include_router(token, prefix='/token')
 
 
-@app.on_event('startup')
-def create_admin():
+def insert_admin():
     try:
         data = {'user': USER, 'password': PASSWORD}
         conn.execute(admin.insert().values(data))
-    except Exception as e:
-        pass
+        return True
+    except sqlalchemy.exc as e:
+        return False
+
+
+@app.on_event('startup')
+def create_admin():
+    result = False
+    while result:
+        result = insert_admin()
