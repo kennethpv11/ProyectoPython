@@ -4,3 +4,4 @@ python-dotenv==0.20.0
 pyjwt==2.4.0
 websockets==10.3
 requests==2.28.1
+busypie==0.4.5
